@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<style>
+    .red
+    {
+        background-color: red;
+        color: darkred;
+    }
+    .green
+    {
+        background-color: green;
+        color: darkgreen;
+    }
+</style>
+<body>
+    <div id="app">
+        <!-- <h1>Hola {{ nombre }} hoy es : {{ fecha }}</h1>
+        <img v-if="valor" :src="url" :alt="mensaje" :title="title">
+        <p v-if="numero_personas>10">Mayor</p>
+        <p v-else-if="numero_personas===10">Empate</p>
+        <p v-else="numero_personas<10">Menor</p>
+
+        <button v-on:click="cambioListas">
+          {{!listas ? "Ver lista" : "Ocultar lista"}}</button>
+
+        <h2 v-on:mouseover="cambioEstudiante" v-on:mouseout="cambioEstudiante">
+            {{estado_estudiante ? "Ocultar Estudiantes" : "Ver Estudiantes"}}</button>
+        </h2>
+
+        <ul v-show="estado_estudiante">
+            <li v-for="(estudiante,indice) in estudiantes">{{indice+1}}-{{estudiante}}</li>
+        </ul>
+        <ol v-show="listas">
+            <li v-for="(precio,indice) in preciosSemana" :key="precio.day">
+                {{ precio.day }} -- {{ precio.precio}}
+            </li>
+        </ol>
+
+        <button v-on:click="palabra_reves">
+            {{palabra}}
+        </button> -->
+        <h1>{{titulo}}</h1>
+        <h2 :class="cantidad > 500 ? 'red' : 'green'">Mi saldo disponible es :{{cantidad}}</h2>
+        <img v-bind:src="url" alt="Imagen de Vue">
+
+        <h2 v-if="estado">Verdadero</h2>
+        <h2 v-else>Falsedad</h2>
+
+
+        <p v-if="cantidad > 500">Cantidad {{cantidad}}</p>
+        <p v-else>Cantidad insuficiente</p>
+
+        <h2>Mis servicios disponibles</h2>
+        <ul>
+            <li v-for="(servicio,index) in servicios" :key="index">{{index}}--{{servicio}}</li>
+        </ul>
+
+
+        <button v-on:click="agregarSaldo">Agregar saldo</button>
+        <button v-on:click="disminuirSaldo" :disabled="desactivar">Disminuir saldo</button>
+
+        
+    </div>
+   
+    <script src="main.js"></script>
+    <script>
+    const mountedApp = app.mount("#app")
+    </script>
+</body>
+</html>
