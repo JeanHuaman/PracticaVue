@@ -17,6 +17,10 @@
         background-color: green;
         color: darkgreen;
     }
+    .footer{
+        background-color : gray;
+        color:white;
+    }
 </style>
 <body>
     <div id="app">
@@ -46,7 +50,7 @@
             {{palabra}}
         </button> -->
         <h1>{{titulo}}</h1>
-        <h2 :class="cantidad > 500 ? 'red' : 'green'">Mi saldo disponible es :{{cantidad}}</h2>
+        <h2 :class="colorCantidad">Mi saldo disponible es :{{cantidad}}</h2>
         <img v-bind:src="url" alt="Imagen de Vue">
 
         <h2 v-if="estado">Verdadero</h2>
@@ -58,17 +62,32 @@
 
         <h2>Mis servicios disponibles</h2>
         <ul>
-            <li v-for="(servicio,index) in servicios" :key="index">{{index}}--{{servicio}}</li>
+            <li v-for="(servicio,index) in servicios" :key="index">
+              <input type="text" :value="index">
+              <button @click="this.index++">+</button> --{{servicio}}</li>
+        </ul>
+
+        <h3>Frutas</h3>
+        <ul>
+            <li v-for="fruta in frutas">
+                <input type="number" v-model="fruta.stock">
+                <button @click="fruta.stock++" >+</button>
+                <button @click="fruta.stock--" :disabled="fruta.stock===0">-</button>
+               <span>{{fruta.nombre}}</span>
+                <span v-if="fruta.stock===0">--No hay Stock</span>
+            </li>
         </ul>
 
 
         <button v-on:click="agregarSaldo">Agregar saldo</button>
         <button v-on:click="disminuirSaldo" :disabled="desactivar">Disminuir saldo</button>
 
+        <footer-banco :cantidad="cantidad" fecha="septiembre 2020"></footer-banco>
         
     </div>
    
     <script src="main.js"></script>
+    <script src="components/Footer.js"></script>
     <script>
     const mountedApp = app.mount("#app")
     </script>

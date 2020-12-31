@@ -46,12 +46,21 @@ const app = Vue.createApp({
             url : "https://www.dotcom-monitor.com/blog/wp-content/uploads/sites/3/2020/05/Vue-logo-1.png",
             estado : false,
             servicios: ["transferencias","pagos","giros"],
-            desactivar : false
+            desactivar : false,
+            frutas:[
+                {nombre:"manzana",stock:5},
+                {nombre:"naranja",stock:8},
+                {nombre:"pera",stock:7}
+            ]
         }
     },
     methods:{
         agregarSaldo(){
             this.cantidad += 100
+            if(this.cantidad>0)
+            {
+                this.desactivar = false
+            }
         },
         disminuirSaldo(){
             if(this.cantidad===0)
@@ -61,6 +70,11 @@ const app = Vue.createApp({
                 return
             }
             this.cantidad -=100
+        }
+    },
+    computed:{
+        colorCantidad(){
+            return this.cantidad > 500 ? "green" : "red"
         }
     }
 })
